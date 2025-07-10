@@ -21,13 +21,10 @@ git clone https://github.com/yourusername/coolthing-password-manager.git
 cd coolthing-password-manager
 
 # 2. Install Python dependencies
-pip install -r req.txt (Or pip3 install -r req.txt)
+pip3 install flask flask-cors cryptography pwnedapi
 
-# 3. Generate encryption key
-python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
-
-# 4. Start the server
-
+# 3. Start the server
+cd python\ flask/
 python app.py
 Add Chrome Extension
 Open Chrome and go to chrome://extensions
