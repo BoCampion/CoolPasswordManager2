@@ -18,14 +18,17 @@ CoolThing is a local, secure, and minimalist password manager built with Flask. 
 
 # 1. Clone the repository
 git clone https://github.com/yourusername/coolthing-password-manager.git
-cd coolthing-password-manager
+cd coolthingpasswordmanager2
 
 # 2. Install Python dependencies
 pip3 install flask flask-cors cryptography pwnedapi
 
+# 3. Create secret Key
+cd python\ flask/ 
+python3 makekey.py
+
 # 3. Start the server
-cd python\ flask/
-python app.py
+python3 app.py
 Add Chrome Extension
 Open Chrome and go to chrome://extensions
 
