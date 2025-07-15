@@ -5,6 +5,7 @@ from flask_cors import CORS
 import os
 import hashlib
 from cryptography.fernet import Fernet
+import random
 
 app = Flask(__name__)
 app.secret_key = 'cool'
@@ -382,6 +383,20 @@ def api_user():
         'logged_in': True,
         'username': session.get('username')
     })
+
+@app.route('/random')
+def generaterandom():
+    validchars = list('abcdefghijklmnopqrstuvwxyz1234567890!@#$%&')
+    rpass = []
+
+    for i in range(20):
+        char = random.choice(validchars)
+        if random.randint(0, 3) == 2:
+            char = char.upper()
+        rpass.append(char)
+
+    password = ''.join(rpass)
+    return jsonify({'password': password})
 
 if __name__ == '__main__':
     init_db()

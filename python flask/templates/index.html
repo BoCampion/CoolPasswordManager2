@@ -77,10 +77,11 @@
                 <h2>Add New Credential</h2>
                 <input type="text" name="site" placeholder="Site Name (e.g., Google)" required>
                 <input type="text" name="username" placeholder="Username or Email" required>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" id="passwordthingy" placeholder="Password" class="passwordthingy" required>
                 <div class="form-buttons">
                     <button type="button" onclick="togglePopup()">Cancel</button>
                     <button type="submit">Save Credential</button>
+                    <button type="button" onclick="generatePassword()">Generate Secure Password</button>
                 </div>
             </form>
         </div>
@@ -215,6 +216,22 @@
         function closeDetails() {
             document.getElementById('entryDetails').style.display = 'none';
         }
+        function makepass(){
+            const passvalue = document.getElementById('passwordthingy');
+            const rpass = "{{ flask_data }}"
+            passvalue.value = rpass
+
+        }
+        function generatePassword() {
+            fetch('/random')
+            .then(response => response.json())
+            .then(data => {
+                const input = document.getElementById('passwordthingy');
+                input.value = data.password;
+            })
+            .catch(err => console.error('Failed to fetch password:', err));
+        }
+
     </script>
 </body>
 </html>
